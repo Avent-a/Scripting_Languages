@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Скорость тела</title>
+</head>
+<body>
+    <h1>Скорость тела</h1>
+    <label for="t">Введите время t:</label>
+    <input type="number" id="t">
+    <button onclick="calculateVelocity()">Вычислить скорость</button>
+    <p id="result"></p>
+
+    <script>
+        function calculateVelocity() {
+            var t = parseFloat(document.getElementById("t").value);
+            var velocity = 3 * t * t - 6 * t;
+            document.getElementById("result").innerText = "Скорость тела в момент времени t: " + velocity;
+        }
+    </script>
+</body>

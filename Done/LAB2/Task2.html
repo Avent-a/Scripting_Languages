@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результаты экспериментов</title>
+</head>
+<body>
+    <h2>Результаты экспериментов:</h2>
+    <p>а) 1/2; <br>
+        Тип данных: <span id="resultA_type"></span> <br>
+        Значение: <span id="resultA_value"></span>
+    </p>
+    
+    <p>б) 12/0; <br>
+        Тип данных: <span id="resultB_type"></span> <br>
+        Значение: <span id="resultB_value"></span>
+    </p>
+
+    <p>в) true + false; <br>
+        Тип данных: <span id="resultC_type"></span> <br>
+        Значение: <span id="resultC_value"></span>
+    </p>
+
+    <p>г) 12 / "6"; <br>
+        Тип данных: <span id="resultD_type"></span> <br>
+        Значение: <span id="resultD_value"></span>
+    </p>
+
+    <p>д) "number" + 15 + 3; <br>
+        Тип данных: <span id="resultE_type"></span> <br>
+        Значение: <span id="resultE_value"></span>
+    </p>
+
+    <p>е) 15 + 3 + "number"; <br>
+        Тип данных: <span id="resultF_type"></span> <br>
+        Значение: <span id="resultF_value"></span>
+    </p>
+
+    <p>ж) [1] > null; <br>
+        Тип данных: <span id="resultG_type"></span> <br>
+        Значение: <span id="resultG_value"></span>
+    </p>
+
+    <p>з) "foo" + + "bar"; <br>
+        Тип данных: <span id="resultH_type"></span> <br>
+        Значение: <span id="resultH_value"></span>
+    </p>
+
+    <p>и) 'true' == true; <br>
+        Тип данных: <span id="resultI_type"></span> <br>
+        Значение: <span id="resultI_value"></span>
+    </p>
+
+    <p>к) false == 'false'; <br>
+        Тип данных: <span id="resultJ_type"></span> <br>
+        Значение: <span id="resultJ_value"></span>
+    </p>
+
+    <p>л) null == ''; <br>
+        Тип данных: <span id="resultK_type"></span> <br>
+        Значение: <span id="resultK_value"></span>
+    </p>
+
+    <p>м) !!"false" == !!"true"; <br>
+        Тип данных: <span id="resultL_type"></span> <br>
+        Значение: <span id="resultL_value"></span>
+    </p>
+
+    <p>н) ['x'] == 'x'; <br>
+        Тип данных: <span id="resultM_type"></span> <br>
+        Значение: <span id="resultM_value"></span>
+    </p>
+
+    <script>
+        // Результаты экспериментов
+        document.getElementById("resultA_type").textContent = typeof (1/2);
+        document.getElementById("resultA_value").textContent = 1/2;
+
+        document.getElementById("resultB_type").textContent = typeof (12/0);
+        document.getElementById("resultB_value").textContent = 12/0;
+
+        document.getElementById("resultC_type").textContent = typeof (true + false);
+        document.getElementById("resultC_value").textContent = true + false;
+
+        document.getElementById("resultD_type").textContent = typeof (12 / "6");
+        document.getElementById("resultD_value").textContent = 12 / "6";
+
+        document.getElementById("resultE_type").textContent = typeof ("number" + 15 + 3);
+        document.getElementById("resultE_value").textContent = "number" + 15 + 3;
+
+        document.getElementById("resultF_type").textContent = typeof (15 + 3 + "number");
+        document.getElementById("resultF_value").textContent = 15 + 3 + "number";
+
+        document.getElementById("resultG_type").textContent = typeof ([1] > null);
+        document.getElementById("resultG_value").textContent = [1] > null;
+
+        document.getElementById("resultH_type").textContent = typeof ("foo" + + "bar");
+        document.getElementById("resultH_value").textContent = "foo" + + "bar";
+
+        document.getElementById("resultI_type").textContent = typeof ('true' == true);
+        document.getElementById("resultI_value").textContent = 'true' == true;
+
+        document.getElementById("resultJ_type").textContent = typeof (false == 'false');
+        document.getElementById("resultJ_value").textContent = false == 'false';
+
+        document.getElementById("resultK_type").textContent = typeof (null == '');
+        document.getElementById("resultK_value").textContent = null == '';
+
+        document.getElementById("resultL_type").textContent = typeof (!!"false" == !!"true");
+        document.getElementById("resultL_value").textContent = !!"false" == !!"true";
+
+        document.getElementById("resultM_type").textContent = typeof (['x'] == 'x');
+        document.getElementById("resultM_value").textContent = ['x'] == 'x';
+    </script>
+</body>
+</html>
