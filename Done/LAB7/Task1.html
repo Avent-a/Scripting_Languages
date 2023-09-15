@@ -1,0 +1,54 @@
+<!-- задание по вариантам -->
+
+<!DOCTYPE html> 
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Проверка возрастающей последовательности</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #sequence-input {
+            margin: 20px;
+            padding: 10px;
+        }
+
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Проверка возрастающей последовательности</h1>
+    <p>Введите числовую последовательность через запятую:</p>
+    <input type="text" id="sequence-input">
+    <button onclick="checkSequence()">Проверить</button>
+    <p id="result"></p>
+
+    <script>
+        function checkSequence() {
+            var inputElement = document.getElementById("sequence-input");
+            var sequence = inputElement.value.split(",").map(Number);
+
+            var isIncreasing = true;
+            for (var i = 1; i < sequence.length; i++) {
+                if (sequence[i] <= sequence[i - 1]) {
+                    isIncreasing = false;
+                    break;
+                }
+            }
+
+            var resultElement = document.getElementById("result");
+            if (isIncreasing) {
+                resultElement.textContent = "Эта последовательность является возрастающей.";
+            } else {
+                resultElement.textContent = "Эта последовательность не является возрастающей.";
+            }
+        }
+    </script>
+</body>
+</html>
