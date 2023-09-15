@@ -1,1 +1,41 @@
 <!-- задание по вариантам -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Разделение четных и нечетных чисел</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Разделение четных и нечетных чисел</h1>
+    
+    <p>Исходная последовательность: <span id="original-sequence"></span></p>
+    <p>Измененная последовательность: <span id="sorted-sequence"></span></p>
+
+    <script>
+        var sequence = [4, 2, 7, 9, 8, 5, 6, 3, 1];
+
+        // Разделяем последовательность на четные и нечетные элементы
+        var evenNumbers = sequence.filter(function(num) {
+            return num % 2 === 0;
+        });
+
+        var oddNumbers = sequence.filter(function(num) {
+            return num % 2 !== 0;
+        });
+
+        // Создаем новую последовательность, в которой сначала идут четные, а затем нечетные числа
+        var sortedSequence = evenNumbers.concat(oddNumbers);
+
+        // Отображаем исходную и измененную последовательности на странице
+        document.getElementById("original-sequence").textContent = sequence.join(", ");
+        document.getElementById("sorted-sequence").textContent = sortedSequence.join(", ");
+    </script>
+</body>
+</html>
