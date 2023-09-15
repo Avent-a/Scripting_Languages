@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Перевод числа из десятичной в двоичную систему</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Перевод числа из десятичной в двоичную систему</h1>
+    
+    <p>Десятичное число: <span id="decimal-number">42</span></p>
+    <p>Двоичное представление: <span id="binary-result"></span></p>
+
+    <script>
+        function decimalToBinary(decimalNumber) {
+            return (decimalNumber >>> 0).toString(2);
+        }
+
+        var decimalNumber = 42; // Замените это число на нужное
+
+        var binaryResult = decimalToBinary(decimalNumber);
+
+        document.getElementById("decimal-number").textContent = decimalNumber;
+        document.getElementById("binary-result").textContent = binaryResult;
+    </script>
+</body>
+</html>
