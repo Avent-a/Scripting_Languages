@@ -2,26 +2,46 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Задача JavaScript</title>
+    <title>Определение числа</title>
     <style>
         body {
             font-family: Arial, sans-serif;
         }
+
+        #prompt-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
+    <div id="prompt-container">
+        <button onclick="checkNumber()">Проверить число</button>
+        <p>Введите число:</p>
+        <input type="text" id="userInput">
+        <p id="result"></p>
+    </div>
+
     <script>
-       var userInput = prompt("Введите число:");
+        function checkNumber() {
+            var userInput = document.getElementById("userInput").value;
+            var number = parseFloat(userInput);
+            var resultMessage = document.getElementById("result");
 
-        // Преобразуем введенную строку в число
-        var number = parseFloat(userInput);
-
-        if (number > 0) {
-            alert("1");
-        } else if (number < 0) {
-            alert("-1");
-        } else {
-            alert("0");
+            if (isNaN(number)) {
+                resultMessage.textContent = "Пожалуйста, введите корректное число.";
+            } else if (number > 0) {
+                resultMessage.textContent = "1";
+            } else if (number < 0) {
+                resultMessage.textContent = "-1";
+            } else {
+                resultMessage.textContent = "0";
+            }
         }
     </script>
 </body>
