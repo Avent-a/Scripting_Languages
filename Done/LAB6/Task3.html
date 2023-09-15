@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Условный оператор ?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var a = 2; // Замените этот параметр на нужное значение
+        var b = 1; // Замените этот параметр на нужное значение
+
+        var result = (a + b < 4) ? 'Мало' : 'Много';
+
+        document.getElementById("result").textContent = result;
+    </script>
+
+    <p>Результат: <span id="result"></span></p>
+</body>
+</html>
