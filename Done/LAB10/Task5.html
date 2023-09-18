@@ -1,0 +1,75 @@
+<!--Хз странное задание-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Студенты</title>
+</head>
+
+<body>
+    <h1>Студенты</h1>
+    <button id="addStudentButton">Добавить студента</button>
+    <div id="studentList"></div>
+
+    <script>
+        // Определение объекта STUDENT
+        function Student(fullName, groupNumber, grades) {
+            this.fullName = fullName;
+            this.groupNumber = groupNumber;
+            this.grades = grades;
+        }
+
+        // Функция для добавления студента в массив
+        function addStudent() {
+            const fullName = prompt('Введите фамилию и инициалы:');
+            const groupNumber = parseInt(prompt('Введите номер группы:'));
+            const grades = [];
+
+            for (let i = 0; i < 5; i++) {
+                const grade = parseFloat(prompt(`Введите оценку ${i + 1}:`));
+                grades.push(grade);
+            }
+
+            const student = new Student(fullName, groupNumber, grades);
+            students.push(student);
+
+            // Сортировка массива студентов по номеру группы
+            students.sort((a, b) => a.groupNumber - b.groupNumber);
+
+            displayStudents();
+        }
+
+        // Функция для отображения студентов
+        function displayStudents() {
+            const studentListDiv = document.getElementById('studentList');
+            studentListDiv.innerHTML = '';
+
+            for (let student of students) {
+                const averageGrade = student.grades.reduce((sum, grade) => sum + grade, 0) / 5;
+
+                if (averageGrade > 4.0) {
+                    const studentInfo = document.createElement('div');
+                    studentInfo.textContent = `Студент: ${student.fullName}, Группа: ${student.groupNumber}`;
+                    studentListDiv.appendChild(studentInfo);
+                }
+            }
+
+            if (studentListDiv.children.length === 0) {
+                const noStudentsMessage = document.createElement('p');
+                noStudentsMessage.textContent = 'Нет студентов с средним баллом больше 4.0.';
+                studentListDiv.appendChild(noStudentsMessage);
+            }
+        }
+
+        const students = [];
+        const addStudentButton = document.getElementById('addStudentButton');
+        addStudentButton.addEventListener('click', addStudent);
+
+        displayStudents(); // Первоначальное отображение студентов
+    </script>
+</body>
+
+</html>
