@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let vib = prompt("Выберите\n1. u = sinx, 2. u = cosx, 3. u = tgx");
+        let x = prompt("Введите x ");
+        let u;
+        if (vib == 1) {
+            u = Math.sin * x;
+        } else if (vib == 2) {
+            u = Math.cos * x;
+        } else if (vib == 3) {
+            u = Math.tan * x;
+        } else {
+            alert("-" + vib);
+        }
+
+        function sum(x, u) {
+            let y;
+            if (u + x > -0, 5) {
+                y = (Math.pow((2 * u + 1), 2)) / ((7 * Math.PI) + x);
+                document.write(1);
+            } else if (-0, 5 <= u + x <= Math.pow(10, -3)) {
+                y = Math.pow(Math.cos(u), 2) - Math.sin(u / 3);
+                document.write(2);
+            } else if (u + x > Math.pow(10, -3)) {
+                y = (Math.log(u + x) - Math.pow(Math.E, x)) / 3, 5 * x;
+                document.write(3);
+            }
+            return y;
+        }
+
+
+        document.write("y = " + sum(x, u));
+    </script>
+</body>
+
+</html>
