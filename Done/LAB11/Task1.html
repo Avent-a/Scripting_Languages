@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #output {
+      font-family: Arial, sans-serif;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="output">
+    <!-- Это место для вывода содержимого объектов -->
+  </div>
+
+  <script>
+    // Создаем объект GROUP
+    var GROUP = {
+      Name: "Иванов И.И.",
+      DAT: {
+        year: 1990,
+        month: 5,
+        day: 15
+      },
+      SES: [85, 90, 78]
+    };
+
+    // Копируем объект по значению
+    var GROUPCopyByValue = JSON.parse(JSON.stringify(GROUP));
+
+    // Копируем объект по ссылке
+    var GROUPCopyByReference = GROUP;
+
+    // Выводим содержимое объектов
+    var output = document.getElementById("output");
+    output.innerHTML += "Оригинальный объект GROUP:<br>" + JSON.stringify(GROUP, null, 2) + "<br><br>";
+    output.innerHTML += "Копия по значению (GROUPCopyByValue):<br>" + JSON.stringify(GROUPCopyByValue, null, 2) + "<br><br>";
+    output.innerHTML += "Копия по ссылке (GROUPCopyByReference):<br>" + JSON.stringify(GROUPCopyByReference, null, 2) + "<br><br>";
+  </script>
+</body>
+</html>
