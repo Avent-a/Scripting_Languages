@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Работа с датой</title>
+</head>
+
+<body>
+    <form>
+        <label for="day">День:</label>
+        <input type="number" id="day" min="1" max="31">
+
+        <label for="month">Месяц:</label>
+        <input type="number" id="month" min="1" max="12">
+
+        <label for="year">Год:</label>
+        <input type="number" id="year">
+
+        <button onclick="checkLeapYear()">Проверить на високосность</button>
+        <button onclick="addDays(5)">Увеличить на 5 дней</button>
+    </form>
+
+    <script>
+        function checkLeapYear() {
+            const yearInput = document.getElementById("year");
+            const year = parseInt(yearInput.value);
+
+            if (!isNaN(year)) {
+                if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+                    alert(`${year} год является високосным.`);
+                } else {
+                    alert(`${year} год не является високосным.`);
+                }
+            } else {
+                alert("Введите корректное значение года.");
+            }
+        }
+
+        function addDays(daysToAdd) {
+            const dayInput = document.getElementById("day");
+            const monthInput = document.getElementById("month");
+            const yearInput = document.getElementById("year");
+
+            let day = parseInt(dayInput.value);
+            let month = parseInt(monthInput.value);
+            let year = parseInt(yearInput.value);
+
+            if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
+                // Создаем объект Date и добавляем дни
+                const currentDate = new Date(year, month - 1, day);
+                currentDate.setDate(currentDate.getDate() + daysToAdd);
+
+                // Обновляем поля формы
+                dayInput.value = currentDate.getDate();
+                monthInput.value = currentDate.getMonth() + 1; // Месяцы в JavaScript начинаются с 0
+                yearInput.value = currentDate.getFullYear();
+
+                // Выводим обновленные значения
+                alert(
+                    `Новая дата: ${currentDate.getDate()}.${currentDate.getMonth() + 1}.${currentDate.getFullYear()}`
+                );
+            } else {
+                alert("Введите корректные значения дня, месяца и года.");
+            }
+        }
+    </script>
+</body>
+
+</html>
