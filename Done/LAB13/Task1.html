@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Калькулятор</title>
 </head>
+
 <body>
     <script>
         let calculator = {
             firstValue: 0,
             secondValue: 0,
-            
+
             read() {
                 this.firstValue = parseFloat(prompt('Введите первое число:'));
                 this.secondValue = parseFloat(prompt('Введите второе число:'));
             },
-            
+
             sum() {
                 return this.firstValue + this.secondValue;
             },
-            
+
             mul() {
                 return this.firstValue * this.secondValue;
             }
@@ -29,4 +31,5 @@
         alert(`Произведение: ${calculator.mul()}`);
     </script>
 </body>
+
 </html>
