@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var GROUP = {
+    Name: "Иванов И.И.",
+    DAT: {
+        Год: 1990,
+        Месяц: 5,
+        День: 15
+    },
+    SES: [85, 92, 78]
+    };
+
+    var GROUP_CopyByReference = GROUP;
+    
+    console.log(GROUP_CopyByReference);
+    function geniral()
+    {
+        GROUP_CopyByReference = null;
+        console.log(GROUP_CopyByReference);
+    }
+    setTimeout(geniral,2000);
+    </script>
+</head>
+<body>
+    
+</body>
