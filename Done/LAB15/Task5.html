@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #output {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="input" placeholder="Введите строку с пробелами">
+  <button onclick="getSubstring()">Получить подстроку</button>
+  <p id="output"></p>
+
+  <script>
+    function getSubstring() {
+      var inputText = document.getElementById("input").value;
+      var firstSpaceIndex = inputText.indexOf(" ");
+      var lastSpaceIndex = inputText.lastIndexOf(" ");
+      
+      if (firstSpaceIndex !== -1 && firstSpaceIndex !== lastSpaceIndex) {
+        var substring = inputText.substring(firstSpaceIndex + 1, lastSpaceIndex);
+        document.getElementById("output").textContent = substring;
+      } else {
+        document.getElementById("output").textContent = "";
+      }
+    }
+  </script>
+</body>
+</html>

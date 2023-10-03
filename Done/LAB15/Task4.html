@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #output4 {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="input4" placeholder="Введите стоимость (например, $120)">
+    <button onclick="extractCurrencyValue()">Извлечь значение</button>
+    <p id="output4"></p>
+
+    <script>
+        function extractCurrencyValue() {
+            var inputText = document.getElementById("input4").value;
+            var currencyValue = inputText.match(/\d+/);
+            if (currencyValue) {
+                document.getElementById("output4").textContent = currencyValue[0];
+            } else {
+                document.getElementById("output4").textContent = "Неверный формат";
+            }
+        }
+    </script>
+</body>
+
+</html>

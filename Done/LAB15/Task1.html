@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #output1 {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="input1" placeholder="Введите строку">
+    <button onclick="ucFirst()">Преобразовать</button>
+    <p id="output1"></p>
+
+    <script>
+        function ucFirst() {
+            var inputText = document.getElementById("input1").value;
+            if (inputText.length > 0) {
+                var result = inputText.charAt(0).toUpperCase() + inputText.slice(1);
+                document.getElementById("output1").textContent = result;
+            } else {
+                document.getElementById("output1").textContent = "Введите строку";
+            }
+        }
+    </script>
+</body>
+
+</html>

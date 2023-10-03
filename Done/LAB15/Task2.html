@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #output2 {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="input2" placeholder="Введите текст">
+    <button onclick="checkSpam()">Проверить</button>
+    <p id="output2"></p>
+
+    <script>
+        function checkSpam() {
+            var inputText = document.getElementById("input2").value;
+            var lowerCaseText = inputText.toLowerCase();
+            if (lowerCaseText.includes("торрент") || lowerCaseText.includes("ммм")) {
+                document.getElementById("output2").textContent = "true";
+            } else {
+                document.getElementById("output2").textContent = "false";
+            }
+        }
+    </script>
+</body>
+
+</html>

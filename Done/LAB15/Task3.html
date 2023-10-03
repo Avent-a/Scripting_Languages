@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #output3 {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="input3" placeholder="Введите строку">
+    <input type="number" id="maxlength" placeholder="Максимальная длина">
+    <button onclick="truncate()">Усечь</button>
+    <p id="output3"></p>
+
+    <script>
+        function truncate() {
+            var inputText = document.getElementById("input3").value;
+            var maxlength = document.getElementById("maxlength").value;
+            if (inputText.length > maxlength) {
+                var truncatedText = inputText.slice(0, maxlength) + "…";
+                document.getElementById("output3").textContent = truncatedText;
+            } else {
+                document.getElementById("output3").textContent = inputText;
+            }
+        }
+    </script>
+</body>
+
+</html>
