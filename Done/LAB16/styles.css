@@ -1,0 +1,31 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.console-output {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+}
+
+.console-output p {
+    margin: 5px 0;
+}
+
+.result-heading {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.result-value {
+    color: green;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
