@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Date Functions</h1>
+
+    <h2>Задание 5: Форматирование даты</h2>
+    <div>
+        <label for="dateInput4">Введите дату:</label>
+        <input type="text" id="dateInput4" placeholder="YYYY-MM-DD HH:mm:ss">
+        <button onclick="formatDate()">Форматировать</button>
+    </div>
+    <div class="result" id="task5Result"></div>
+    </div>
+
+    <script>
+        // Задание 5
+        function formatDate() {
+            const inputDate = new Date(document.getElementById('dateInput4').value);
+            const currentDate = new Date();
+
+            const secondsDiff = Math.floor((currentDate - inputDate) / 1000);
+            if (secondsDiff < 1) {
+                document.getElementById('task5Result').innerText = 'Прямо сейчас';
+                return;
+            }
+
+            const minutesDiff = Math.floor(secondsDiff / 60);
+            if (minutesDiff < 1) {
+                document.getElementById('task5Result').innerText = `${secondsDiff} сек. назад`;
+                return;
+            }
+
+            const hoursDiff = Math.floor(minutesDiff / 60);
+            if (hoursDiff < 1) {
+                document.getElementById('task5Result').innerText = `${minutesDiff} мин. назад`;
+                return;
+            }
+
+            const formattedDate = `${(inputDate.getDate() < 10 ? '0' : '') + inputDate.getDate()}.` +
+                `${(inputDate.getMonth() + 1 < 10 ? '0' : '') + (inputDate.getMonth() + 1)}.` +
+                `${inputDate.getFullYear().toString().slice(-2)} ` +
+                `${(inputDate.getHours() < 10 ? '0' : '') + inputDate.getHours()}:` +
+                `${(inputDate.getMinutes() < 10 ? '0' : '') + inputDate.getMinutes()}`;
+            document.getElementById('task5Result').innerText = `Полная дата: ${formattedDate}`;
+        }
+    </script>
+
+</body>
+
+</html>

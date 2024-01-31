@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Date Functions</h1>
+
+    <h2>Задание 3: День недели в европейской нумерации</h2>
+    <div>
+        <label for="dateInput2">Введите дату:</label>
+        <input type="text" id="dateInput2" placeholder="YYYY-MM-DD HH:mm:ss">
+        <button onclick="getLocalDay()">Показать европейский день недели</button>
+    </div>
+    <div class="result" id="task3Result"></div>
+    </div>
+
+    <script>
+        // Задание 3
+        function getLocalDay() {
+            const inputDate = new Date(document.getElementById('dateInput2').value);
+            const localDay = (inputDate.getDay() === 0) ? 7 : inputDate.getDay();
+            document.getElementById('task3Result').innerText = `Европейский день недели: ${localDay}`;
+        }
+    </script>
+
+</body>
+
+</html>

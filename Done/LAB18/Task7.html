@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Радиоэфир</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Сеансы радиоэфира</h1>
+
+    <!-- Форма для ввода данных -->
+    <div>
+        <label for="dateInput">Введите дату:</label>
+        <input type="text" id="dateInput" placeholder="YYYY-MM-DD">
+        <label for="startTimeInput">Введите начальное время (HH:mm):</label>
+        <input type="text" id="startTimeInput" placeholder="HH:mm">
+        <label for="endTimeInput">Введите конечное время (HH:mm):</label>
+        <input type="text" id="endTimeInput" placeholder="HH:mm">
+        <button onclick="showSessions()">Показать информацию</button>
+    </div>
+
+    <!-- Результаты вывода информации -->
+    <div id="result"></div>
+
+    <script>
+        // Пример данных о сеансах радиоэфира
+        const radioSessions = [
+            { callsign: 'ABC123', frequency: '100.0 MHz', date: '2024-01-29', startTime: '12:00', endTime: '13:30', groupsTransmitted: 30 },
+            { callsign: 'XYZ789', frequency: '105.5 MHz', date: '2024-01-29', startTime: '14:00', endTime: '15:45', groupsTransmitted: 25 },
+            { callsign: 'DEF456', frequency: '98.8 MHz', date: '2024-01-30', startTime: '10:00', endTime: '11:30', groupsTransmitted: 35 },
+            { callsign: 'GHI789', frequency: '102.2 MHz', date: '2024-01-30', startTime: '16:00', endTime: '17:15', groupsTransmitted: 28 }
+            // Добавьте еще данные, если необходимо
+        ];
+
+        // Функция для вывода информации о скорости передачи групп в минуту
+        function showSpeedInfo() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<h2>Информация о скорости передачи групп в минуту</h2>';
+
+            radioSessions.forEach(session => {
+                const speed = Math.round(session.groupsTransmitted / ((new Date(session.endTime) - new Date(session.startTime)) / (1000 * 60)));
+                const info = `<p>${session.callsign} (${session.frequency}): ${speed} групп/мин</p>`;
+                resultDiv.innerHTML += info;
+            });
+        }
+
+        // Функция для вывода информации о выходе радистов на связь для введенной даты и временного интервала
+        function showSessions() {
+            const inputDate = document.getElementById('dateInput').value;
+            const startTime = document.getElementById('startTimeInput').value;
+            const endTime = document.getElementById('endTimeInput').value;
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<h2>Информация о выходе радистов на связь</h2>';
+
+            const filteredSessions = radioSessions.filter(session => session.date === inputDate && session.startTime >= startTime && session.endTime <= endTime);
+
+            if (filteredSessions.length > 0) {
+                const table = `<table>
+                                    <tr>
+                                        <th>Позывной</th>
+                                        <th>Частота</th>
+                                        <th>Дата</th>
+                                        <th>Начало</th>
+                                        <th>Окончание</th>
+                                        <th>Группы</th>
+                                    </tr>`;
+                const rows = filteredSessions.map(session => `<tr>
+                                                                <td>${session.callsign}</td>
+                                                                <td>${session.frequency}</td>
+                                                                <td>${session.date}</td>
+                                                                <td>${session.startTime}</td>
+                                                                <td>${session.endTime}</td>
+                                                                <td>${session.groupsTransmitted}</td>
+                                                            </tr>`).join('');
+
+                resultDiv.innerHTML += table + rows + '</table>';
+            } else {
+                resultDiv.innerHTML += '<p>Нет информации о сеансах для указанных даты и времени.</p>';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
