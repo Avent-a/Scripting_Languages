@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3: JSON Array Serialization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let arrayOfObjects = [
+            { id: 1, name: "Object1", value: 10 },
+            { id: 2, name: "Object2", value: 20 },
+            // ... другие объекты
+        ];
+
+        let serializedArray = JSON.stringify(arrayOfObjects);
+        let deserializedArray = JSON.parse(serializedArray);
+
+        console.log(deserializedArray);
+
+        document.body.innerHTML = `<p>Deserialized Array: ${JSON.stringify(deserializedArray)}</p>`;
+    </script>
+</body>
+</html> 

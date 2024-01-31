@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2: Exclude Circular References</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let room = {
+            number: 23
+        };
+
+        let meetup = {
+            title: "Совещание",
+            occupiedBy: [{ name: "Иванов" }, { name: "Петров" }],
+            place: room
+        };
+
+        room.occupiedBy = null; // Break the circular reference here
+        meetup.self = meetup;
+
+        let serializedMeetup = JSON.stringify(meetup, function replacer(key, value) {
+            if (key === "self" || key === "occupiedBy" && Array.isArray(value)) {
+                return undefined;
+            }
+            return value;
+        });
+
+        console.log(serializedMeetup);
+
+        document.body.innerHTML = `<p>Serialized Meetup: ${serializedMeetup}</p>`;
+    </script>
+</body>
+</html>
