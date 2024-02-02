@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    let json = `[
+      {
+          "name": "user1",
+          "age": 25,
+          "salary": 1000
+      },
+      {
+          "name": "user2",
+          "age": 26,
+          "salary": 2000
+      },
+      {
+          "name": "user3",
+          "age": 27,
+          "salary": 3000
+      }
+    ]`;
+
+    try {
+      const parsedJson = JSON.parse(json);
+      if (!Array.isArray(parsedJson)) {
+        throw new Error("Invalid JSON format. Expected an array.");
+      }
+
+      console.log("Parsed JSON:", parsedJson);
+    } catch (error) {
+      console.error(error.message);
+    }
+  </script>
+</body>
+</html>

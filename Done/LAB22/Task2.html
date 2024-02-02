@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 2</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function sqrtNumber(num) {
+      if (num < 0) {
+        throw new Error("Cannot take square root of a negative number");
+      }
+      return Math.sqrt(num);
+    }
+
+    try {
+      const userInput = parseFloat(prompt("Введите число для извлечения корня:"));
+      if (isNaN(userInput)) {
+        throw new Error("Введено некорректное число.");
+      }
+
+      const result = sqrtNumber(userInput);
+      console.log("Корень числа:", result);
+    } catch (error) {
+      console.error(error.message);
+    }
+  </script>
+</body>
+</html>

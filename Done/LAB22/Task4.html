@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 4</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    try {
+      const num1 = parseFloat(prompt("Введите первое число:"));
+      const num2 = parseFloat(prompt("Введите второе число:"));
+      const num3 = parseFloat(prompt("Введите третье число:"));
+
+      if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+        throw new Error("Не введено одно или несколько чисел.");
+      }
+
+      if (num1 < 0) {
+        throw new Error("Первое число меньше ноля.");
+      } else if (num2 === 0) {
+        throw new Error("Второе число равно нолю.");
+      }
+
+      console.log("Введенные числа:", num1, num2, num3);
+    } catch (error) {
+      console.error(error.message);
+    } finally {
+      console.log("Завершение работы алгоритма.");
+    }
+  </script>
+</body>
+</html>
