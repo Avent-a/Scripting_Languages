@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+</head>
+<body>
+    <script>
+        // Генерируем случайные значения для изменения размеров окна
+        const randomWidthChange = Math.floor(Math.random() * 200) + 100; // изменение от 100 до 300 пикселей
+        const randomHeightChange = Math.floor(Math.random() * 200) + 100;
+
+        // Получаем текущий размер окна
+        const currentWidth = window.innerWidth;
+        const currentHeight = window.innerHeight;
+
+        // Вычисляем новый размер окна
+        const newWidth = currentWidth + randomWidthChange;
+        const newHeight = currentHeight + randomHeightChange;
+
+        // Изменяем размер окна на новый размер
+        window.resizeBy(newWidth - currentWidth, newHeight - currentHeight);
+
+        // Выводим новый размер в консоль
+        console.log(`Новый размер окна: ${newWidth} x ${newHeight}`);
+    </script>
+</body>
+</html>

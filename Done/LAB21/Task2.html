@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <script>
+        // Запрашиваем у пользователя число
+        const userNumber = prompt("Введите число от 100 до 1000:");
+
+        // Проверяем, что введено число и оно в заданном диапазоне
+        if (!isNaN(userNumber) && userNumber >= 100 && userNumber <= 1000) {
+            // Прокручиваем страницу на введенное число
+            alert("Отлично вы ввели " + userNumber);
+            window.scrollTo(0, userNumber);
+        } else {
+            alert("Пожалуйста, введите корректное число от 100 до 1000.");
+            location.reload();
+        }
+    </script>
+</body>
+</html>

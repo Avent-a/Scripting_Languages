@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  #content-container {
+    padding: 20px;
+  }
+  
+  .page-content {
+    display: none;
+  }
+  
+  .page-content.active {
+    display: block;
+  }
+  
