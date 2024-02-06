@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Elements</title>
+    <style>
+        /* Просто для стилизации */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #parent {
+            border: 1px solid black;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 0;
+            padding: 5px;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="parent">
+        <p>First Child</p>
+        <p>Second Child</p>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var parentElement = document.getElementById('parent');
+
+            // Проверяем elem.lastChild.nextSibling
+            console.log("elem.lastChild.nextSibling:", parentElement.lastChild.nextSibling);
+
+            // Проверяем elem.children[0].previousSibling
+            console.log("elem.children[0].previousSibling:", parentElement.children[0].previousSibling);
+        };
+
+    </script>
+</body>
+
+</html>

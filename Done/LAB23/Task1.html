@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessing Elements</title>
+</head>
+<body>
+    <div>Пользователи:</div>
+    <ul>
+        <li>Джон</li>
+        <li>Пит</li>
+    </ul>
+
+    <script>
+        // Получение элемента <div>
+        var divElement = document.querySelector('div');
+        console.log(divElement);
+
+        // Получение элемента <ul>
+        var ulElement = document.querySelector('ul');
+        console.log(ulElement);
+
+        // Получение второго элемента <li> с именем "Пит"
+        var secondLiWithNamePit = document.querySelector('li:nth-of-type(2)');
+        console.log(secondLiWithNamePit);
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+    <form name="search">
+        <label>Поиск по сайту:
+            <input type="text" name="search">
+        </label>
+        <input type="submit" value="Найти!">
+    </form>
+
+
+    <hr>
+
+
+    <form name="search-person">
+        Поиск посетителей:
+        <table id="age-table">
+            <tr>
+                <td>Возраст:</td>
+                <td id="age-list">
+                    <label>
+                        <input type="radio" name="age" value="young">меньше 18</label>
+                    <label>
+                        <input type="radio" name="age" value="mature">18-50</label>
+                    <label>
+                        <input type="radio" name="age" value="senior">старше 50</label>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>Дополнительно:</td>
+                <td>
+                    <input type="text" name="info[0]">
+                    <input type="text" name="info[1]">
+                    <input type="text" name="info[2]">
+                </td>
+            </tr>
+
+
+        </table>
+
+
+        <input type="submit" value="Найти!">
+    </form>
+
+    <script>
+        // Таблица с id="age-table"
+        var ageTable = document.getElementById('age-table');
+        console.log(ageTable);
+
+        // Все элементы label внутри этой таблицы (их три)
+        var labelsInsideTable = ageTable.getElementsByTagName('label');
+        console.log(labelsInsideTable);
+
+        // Первый td в этой таблице (со словом «Age»)
+        var firstTdInTable = ageTable.querySelector('td');
+        console.log(firstTdInTable);
+
+        // Форма form с именем name="search"
+        var searchForm = document.forms['search'];
+        console.log(searchForm);
+
+        // Первый input в этой форме
+        var firstInputInForm = searchForm.querySelector('input');
+        console.log(firstInputInForm);
+
+        // Последний input в этой форме
+        var lastInputInForm = searchForm.querySelector('input:last-of-type');
+        console.log(lastInputInForm);
+    </script>
+</body>
+
+</html>
