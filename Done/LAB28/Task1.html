@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend's Birthdays</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #output {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="output"></div>
+
+    <script>
+        class ParentClass {
+            constructor(day, month, year) {
+                this.day = day;
+                this.month = month;
+                this.year = year;
+            }
+        }
+
+        class ChildClass extends ParentClass {
+            constructor(day, month, year, friends) {
+                super(day, month, year);
+                this.friends = friends;
+            }
+
+            daysUntilNextBirthday() {
+                // Здесь ваш код для определения количества дней до следующего дня рождения
+                // Верните здесь количество дней
+                return 0;
+            }
+
+            formatInfo() {
+                const friendsInfo = this.friends.map(friend => `Name: ${friend.name}, Phone: ${friend.phone}, Birthday: ${friend.birthday}`).join('<br>');
+                const outputDiv = document.getElementById('output');
+                outputDiv.innerHTML = `
+            <p>Date: ${this.day}.${this.month}.${this.year}</p>
+            <p>Friends:</p>
+            <p>${friendsInfo}</p>
+            <p>Days until next birthday: ${this.daysUntilNextBirthday()}</p>
+        `;
+            }
+        }
+
+        // Пример использования
+        const friendsList = [
+            { name: "John Doe", phone: "123-456-7890", birthday: "05-12" },
+            { name: "Jane Smith", phone: "987-654-3210", birthday: "08-20" }
+        ];
+        const childObj = new ChildClass(6, 2, 1990, friendsList);
+        childObj.formatInfo();
+
+    </script>
+</body>
+
+</html>

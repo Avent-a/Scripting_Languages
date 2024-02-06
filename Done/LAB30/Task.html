@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Обратное число</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    input[type="number"] {
+        width: 200px;
+        padding: 10px;
+        font-size: 16px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    #result {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+</style>
+</head>
+<body>
+    <h2>Обратное число</h2>
+    <label for="number">Введите число (без нулей):</label>
+    <input type="number" id="number" min="1" step="1" required>
+    <button onclick="reverseNumber()">Обратить</button>
+    <div id="result"></div>
+
+    <script>
+        function reverseNumber() {
+            const number = document.getElementById('number').value;
+            const reversedNumber = reverse(number);
+            document.getElementById('result').innerText = `Обратное число: ${reversedNumber}`;
+        }
+
+        function reverse(number) {
+            // Преобразуем число в строку для работы с отдельными цифрами
+            const numString = number.toString();
+            // Базовый случай: если число состоит из одной цифры, возвращаем само число
+            if (numString.length === 1) {
+                return parseInt(numString);
+            }
+            // В противном случае рекурсивно разворачиваем строку и объединяем последнюю цифру
+            return parseInt(numString[numString.length - 1] + reverse(numString.substring(0, numString.length - 1)));
+        }
+    </script>
+</body>
+</html>

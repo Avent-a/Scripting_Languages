@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Quality Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #computerForm {
+            margin: 20px;
+        }
+
+        #output {
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="computerForm">
+        <label for="processorName">Processor Name:</label>
+        <input type="text" id="processorName"><br>
+        <label for="processorSpeed">Processor Speed (MHz):</label>
+        <input type="number" id="processorSpeed"><br>
+        <label for="ram">RAM (MB):</label>
+        <input type="number" id="ram"><br>
+        <label for="hdd">HDD Size (GB):</label>
+        <input type="number" id="hdd"><br>
+        <button onclick="calculateQuality()">Calculate Quality</button>
+    </div>
+    <div id="output"></div>
+
+    <script>
+        function calculateQuality() {
+            const processorName = document.getElementById('processorName').value;
+            const processorSpeed = parseFloat(document.getElementById('processorSpeed').value);
+            const ram = parseFloat(document.getElementById('ram').value);
+            const hdd = parseFloat(document.getElementById('hdd').value);
+
+            const quality = (0.1 * processorSpeed) + ram;
+            const childQuality = quality + (0.5 * hdd);
+
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = `
+        <p>Processor: ${processorName}</p>
+        <p>Processor Speed: ${processorSpeed} MHz</p>
+        <p>RAM: ${ram} MB</p>
+        <p>HDD Size: ${hdd} GB</p>
+        <p>Quality (Parent Class): ${quality}</p>
+        <p>Quality (Child Class): ${childQuality}</p>
+    `;
+        }
+
+    </script>
+</body>
+
+</html>

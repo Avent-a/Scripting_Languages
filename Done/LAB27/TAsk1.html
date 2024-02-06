@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .form-group {
+            margin-bottom: 1em;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+        }
+        input[type="number"] {
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-group">
+        <label for="day">День:</label>
+        <input type="number" id="day" min="1" max="31">
+    </div>
+    <div class="form-group">
+        <label for="month">Месяц:</label>
+        <input type="number" id="month" min="1" max="12">
+    </div>
+    <div class="form-group">
+        <label for="year">Год:</label>
+        <input type="number" id="year" min="1">
+    </div>
+    <button onclick="isLeapYear()">Является ли год високосным?</button>
+    <button onclick="increaseByFiveDays()">Увеличить дату на 5 дней</button>
+    <p id="result"></p>
+
+    <script>
+        function isLeapYear() {
+            var year = document.getElementById('year').value;
+            var result = (year % 4 == 0) ? 'Високосный год' : 'Не високосный год';
+            document.getElementById('result').innerText = result;
+        }
+
+        function increaseByFiveDays() {
+            var day = Number(document.getElementById('day').value);
+            var month = Number(document.getElementById('month').value);
+            var year = Number(document.getElementById('year').value);
+
+            day += 5;
+            if (day > 30) {
+                day -= 30;
+                month++;
+                if (month > 12) {
+                    month -= 12;
+                    year++;
+                }
+            }
+
+            document.getElementById('result').innerText = 'Новая дата: ' + day + '.' + month + '.' + year;
+        }
+    </script>
+</body>
+</html>

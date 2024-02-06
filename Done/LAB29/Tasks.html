@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promises Tasks</title>
+<style>
+    /* CSS стили могут быть добавлены здесь */
+</style>
+</head>
+<body>
+    <script>
+        // Задание 1
+        function fetchDataWithTimeout(url, timeout) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    fetch(url)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => resolve(data))
+                        .catch(error => reject(error));
+                }, timeout);
+            });
+        }
+
+        // Задание 2
+        function waitForAll(promises) {
+            return Promise.all(promises);
+        }
+
+        // Задание 3
+        function getRandomNumberWithDelay() {
+            return new Promise((resolve, reject) => {
+                const randomDelay = Math.floor(Math.random() * 5000) + 1000; // от 1 до 5 секунд
+                setTimeout(() => {
+                    const randomNumber = Math.floor(Math.random() * 100) + 1; // от 1 до 100
+                    resolve(randomNumber);
+                }, randomDelay);
+            });
+        }
+
+        // Задание 4
+        function fetchDataForUrls(urls) {
+            const promises = urls.map(urlObj => {
+                return new Promise((resolve, reject) => {
+                    fetch(urlObj.url)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            urlObj.data = data;
+                            resolve(urlObj);
+                        })
+                        .catch(error => reject(error));
+                });
+            });
+            return Promise.all(promises);
+        }
+
+        // Задание 5
+        function executePromisesWithTimeout(promises, timeout) {
+            return Promise.allSettled(
+                promises.map(p => Promise.race([p, new Promise((_, reject) => setTimeout(() => reject(new Error('Promise timeout')), timeout))]))
+            );
+        }
+
+        // Пример использования функций:
+        const url = 'https://jsonplaceholder.typicode.com/posts/1';
+        fetchDataWithTimeout(url, 3000)
+            .then(data => console.log('Task 1:', data))
+            .catch(error => console.error('Task 1 Error:', error));
+
+        const promises = [
+            fetch(url),
+            fetch(url),
+            fetch(url)
+        ];
+
+        waitForAll(promises)
+            .then(data => console.log('Task 2:', data))
+            .catch(error => console.error('Task 2 Error:', error));
+
+        getRandomNumberWithDelay()
+            .then(data => console.log('Task 3:', data))
+            .catch(error => console.error('Task 3 Error:', error));
+
+        const urls = [{ url: 'https://jsonplaceholder.typicode.com/posts/1' }, { url: 'https://jsonplaceholder.typicode.com/posts/2' }];
+        fetchDataForUrls(urls)
+            .then(data => console.log('Task 4:', data))
+            .catch(error => console.error('Task 4 Error:', error));
+
+        executePromisesWithTimeout(promises, 2000)
+            .then(data => console.log('Task 5:', data))
+            .catch(error => console.error('Task 5 Error:', error));
+    </script>
+</body>
+</html>

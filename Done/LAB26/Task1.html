@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Асинхронная функция</title>
+</head>
+<body>
+
+<input id="a" type="number" placeholder="Введите a">
+<input id="b" type="number" placeholder="Введите b">
+<input id="c" type="number" placeholder="Введите c">
+<button onclick="getRoots()">Решить уравнение</button>
+<p id="result"></p>
+
+<script>
+    function solveEquation(a, b, c) {
+        return new Promise((resolve) => {
+            const randomTime = Math.floor(Math.random() * 10000) + 1000;
+            setTimeout(() => {
+                const discriminant = b*b - 4*a*c;
+                if (discriminant < 0) {
+                    resolve('Нет действительных корней');
+                } else {
+                    const root1 = (-b + Math.sqrt(discriminant)) / (2*a);
+                    const root2 = (-b - Math.sqrt(discriminant)) / (2*a);
+                    resolve(`Корни равны ${root1} и ${root2}`);
+                }
+            }, randomTime);
+        });
+    }
+
+    async function getRoots() {
+        const a = document.getElementById('a').value;
+        const b = document.getElementById('b').value;
+        const c = document.getElementById('c').value;
+        const resultElement = document.getElementById('result');
+        resultElement.textContent = 'Решение...';
+        try {
+            const result = await solveEquation(a, b, c);
+            resultElement.textContent = result;
+        } catch(error) {
+            console.error(error);
+            resultElement.textContent = 'Произошла ошибка';
+        }
+    }
+</script>
+
+</body>
+</html>

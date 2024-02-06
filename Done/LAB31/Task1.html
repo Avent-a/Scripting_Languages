@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Домашняя библиотека</title>
+<style>
+    /* Ваш стиль CSS может быть добавлен здесь */
+</style>
+</head>
+<body>
+    <h2>Домашняя библиотека</h2>
+
+    <script>
+        // Класс книги
+        class Book {
+            constructor(title, author, year) {
+                this.title = title;
+                this.author = author;
+                this.year = year;
+            }
+        }
+
+        // Класс библиотеки
+        class Library {
+            constructor() {
+                this.books = []; // массив книг
+            }
+
+            // Добавление книги в библиотеку
+            addBook(book) {
+                this.books.push(book);
+            }
+
+            // Удаление книги из библиотеки по названию
+            removeBookByTitle(title) {
+                this.books = this.books.filter(book => book.title !== title);
+            }
+
+            // Поиск книги по автору
+            searchByAuthor(author) {
+                return this.books.filter(book => book.author === author);
+            }
+
+            // Поиск книги по году издания
+            searchByYear(year) {
+                return this.books.filter(book => book.year === year);
+            }
+
+            // Сортировка книг по названию
+            sortByTitle() {
+                this.books.sort((a, b) => a.title.localeCompare(b.title));
+            }
+
+            // Сортировка книг по автору
+            sortByAuthor() {
+                this.books.sort((a, b) => a.author.localeCompare(b.author));
+            }
+
+            // Сортировка книг по году издания
+            sortByYear() {
+                this.books.sort((a, b) => a.year - b.year);
+            }
+        }
+
+        // Пример использования классов
+        const library = new Library();
+
+        const book1 = new Book("Harry Potter", "J.K. Rowling", 1997);
+        const book2 = new Book("Lord of the Rings", "J.R.R. Tolkien", 1954);
+        const book3 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 1925);
+
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+
+        console.log(library.books);
+
+        library.sortByYear();
+        console.log(library.books);
+    </script>
+</body>
+</html>
